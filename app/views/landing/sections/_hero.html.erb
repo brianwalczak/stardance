@@ -1,39 +1,87 @@
-<section class="hero" role="main">
-  <div class="hero__bg" aria-hidden="true">
-    <%= image_tag "landing/space/moon-opp.png", class: "hero__bg-overlay", alt: "" %>
+<div class="section hero" role="main">
+  <% if @show_opensauce_banner %>
+    <button class="open-sauce" data-controller="modal" data-modal-target-value="opensauce-modal" data-action="click->modal#open">
+      <%= image_tag "opensauce_left.avif", alt: "William Osman's Coke", class: "open-sauce__left-image" %>
+      <h2 class="normal">Hack Club x Open Sauce</h2>
+      <h3>new items <span>available!</span></h3>
+      <%= image_tag "opensauce_right.avif", alt: "William Osman's Coke", class: "open-sauce__right-image" %>
+      <h2 class="only-mobile">&#9432;</h2>
+    </button>
+
+    <dialog id="opensauce-modal" class="modal" data-controller="modal">
+      <h3 class="modal__title" style="border-radius: calc(var(--border-radius)*.6);">Hack Club x Open Sauce</h3>
+      <h4>
+        <p>Hack Club has partnered with Open Sauce to bring you free tickets and travel scholarships to Open Sauce 2026! Join Flavortown today to get them from the shop. Bonus: You can now also buy William Osman's <a href="https://www.youtube.com/watch?v=1qzcum2P1Ko" target="_blank" rel="noopener noreferrer">pirated coke</a>!</p>
+        <%= button_to "Sign up for free stickers", "/auth/hack_club", method: :post, class: "modal__button" %>
+        <%= image_tag "landing-page-opensauce.avif", alt: "Modal Image", class: "modal__image" %>
+      </h4>
+    </dialog>
+  <% end %>
+
+  <div class="rsvp-container">
+    <p class="hero__eyebrow">For teens (13–18):</p>
+    <h1 class="hero__headline"><span>Build something</span><span>out of this <span class="hero__headline--italic">world.</span></span></h1>
+    <p class="hero__subhead">The largest STEM challenge of the summer — code personal projects and win free prizes.</p>
+
+    <div class="rsvp-form">
+      <%= form_with url: submit_email_path, method: :post, local: true do |form| %>
+        <div class="rsvp-form__row">
+          <%= image_tag image_url("landing/hero/doodle-arrow.png"), class: "hero__doodle-arrow", alt: "" %>
+          <div class="input-red">
+            <div>
+              <%= form.email_field :email, placeholder: "Enter your email...", autocomplete: "off", required: true %>
+            </div>
+          </div>
+
+          <%= form.button type: "submit", class: "btn btn--red btn--striped" do %>
+            <div>RSVP &rarr;</div>
+          <% end %>
+        </div>
+      <% end %>
+      <p class="hero__caption">For all teens aged 13–18.</p>
+      <div class="rsvp-form__links">
+        <% if false # temporarily hidden %>
+          <%= button_to "or, sign back in", "/auth/hack_club", method: :post, form_class: "sign-back-in-link", class: "link-btn" %>
+        <% end %>
+        <% if Rails.env.development? && current_user.blank? %>
+          <%= button_to "dev login",
+                        "/dev_login",
+                        method: :get,
+                        form_class: "sign-back-in-link",
+                        class: "link-btn" %>
+        <% end %>
+      </div>
+      <%= image_tag image_url("icons/chevrons-red-down.svg"), class: "carat", size: 48, alt: "" %>
+    </div>
   </div>
 
-  <nav class="hero__nav">
-    <%= image_tag "landing/space/stardance.png", class: "hero__nav-logo", alt: "Stardance Challenge" %>
-    <div class="hero__nav-sponsors">
-      <%= image_tag "landing/space/hackclub.png", alt: "Hack Club", class: "hero__nav-sponsor" %>
-      <span class="hero__nav-sponsor-divider" aria-hidden="true">|</span>
-      <%= image_tag "landing/space/nasa.png", alt: "NASA", class: "hero__nav-sponsor" %>
-      <span class="hero__nav-sponsor-divider" aria-hidden="true">|</span>
-      <%= image_tag "landing/space/amd.png", alt: "AMD", class: "hero__nav-sponsor hero__nav-sponsor--amd" %>
+  <div class="hero-space-art hero-space-art--moon">
+    <div class="hero-space-art__crop">
+      <%= image_tag image_url("landing/hero/hero-moon.png"), loading: "eager", fetchpriority: "high", alt: "" %>
     </div>
-  </nav>
-
-  <div class="hero__content">
-    <p class="hero__eyebrow">For teens (13&ndash;18):</p>
-    <h1 class="hero__heading">Build something out of this world.</h1>
-    <p class="hero__subtext">The largest STEM challenge of the summer &mdash; code personal projects and win free prizes.</p>
-
-    <div class="hero__rsvp">
-      <%= render "landing/rsvp_form", rsvp: nil %>
-    </div>
-
-    <p class="hero__disclaimer"><em>For all teens aged 13&ndash;18.</em></p>
   </div>
 
-  <div class="hero__art" aria-hidden="true">
-    <div class="hero__art-photo hero__art-photo--top">
-      <%= image_tag "landing/space/juice.png", alt: "", class: "hero__art-photo-img" %>
+  <div class="hero-space-art hero-space-art--artemis">
+    <div class="hero-space-art__crop">
+      <%= image_tag image_url("landing/hero/artemis2.png"), loading: "eager", alt: "Artemis 2 spacecraft" %>
     </div>
-    <div class="hero__art-photo hero__art-photo--bottom">
-      <%= image_tag "landing/space/reem.png", alt: "", class: "hero__art-photo-img" %>
+    <div class="hero-photo-card">
+      <div class="hero-photo-card__image">
+        <%= image_tag image_url("landing/hero/photo-card-artemis.png"), loading: "lazy", alt: "teens working on space project" %>
+      </div>
+      <%= image_tag image_url("landing/hero/polygon-arrow.svg"), class: "hero-photo-card__arrow", alt: "" %>
     </div>
-    <%= image_tag "landing/space/val's-probe.png", class: "hero__art-spacecraft", alt: "" %>
-    <%= image_tag "landing/space/jeb's-station.png", class: "hero__art-satellite", alt: "" %>
   </div>
-</section>
+
+  <div class="hero-space-art hero-space-art--satellite">
+    <div class="hero-space-art__crop">
+      <%= image_tag image_url("landing/hero/satellite.png"), loading: "lazy", alt: "Satellite" %>
+    </div>
+    <div class="hero-photo-card">
+      <div class="hero-photo-card__image">
+        <%= image_tag image_url("landing/hero/photo-card-satellite.png"), loading: "lazy", alt: "teens at Hack Club" %>
+      </div>
+      <%= image_tag image_url("landing/hero/polygon-arrow.svg"), class: "hero-photo-card__arrow", alt: "" %>
+    </div>
+  </div>
+</div>

@@ -69,6 +69,9 @@ group :development do
   # Preview email in development [https://github.com/ryanb/letter_opener]
   gem "letter_opener"
   gem "letter_opener_web"
+
+  # Hot-module reload for Rails (ERB/SCSS/Stimulus) [https://github.com/hotwired/spark]
+  gem "hotwire-spark"
 end
 
 group :test do

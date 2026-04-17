@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <title><%= content_for?(:title) ? "#{strip_tags(yield(:title))} - Stardance" : "Stardance - Hack Club" %></title>
-    <%= favicon_link_tag 'favicon.ico' %>
+    <%= favicon_link_tag 'favicon.png', type: 'image/png' %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -53,6 +53,9 @@
     <script src="/howler.js"></script>
     <script src="/yappingv2.js"></script>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <% if Rails.env.development? %>
+      <script src="http://localhost:7340/overlay.js" defer></script>
+    <% end %>
     <%= Sentry.get_trace_propagation_meta.html_safe %> <%# erb_lint:disable ErbSafety %>
   </head>
 
