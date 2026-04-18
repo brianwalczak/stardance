@@ -7,7 +7,7 @@
   aspect-ratio: 1280 / 450;
   overflow: visible;
   overflow-x: clip;
-  margin-top: 1rem;
+  margin-top: var(--space-m);
   margin-bottom: 6rem;
 
   &__text {
@@ -181,7 +181,7 @@
       right: auto;
       top: auto;
       text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: var(--space-xl);
     }
 
     &__subtitle {

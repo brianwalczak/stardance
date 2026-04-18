@@ -61,7 +61,7 @@
   &__top-row {
     display: flex;
     align-items: flex-start;
-    gap: 3rem;
+    gap: var(--space-xxxl);
     width: 100%;
   }
 

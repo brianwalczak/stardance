@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 4rem 2rem 3rem;
+  padding: var(--space-xxxxl) var(--space-xl) var(--space-xxxl);
   color: white;
 
   &__title {
@@ -12,7 +12,7 @@
     font-weight: 700;
     font-size: clamp(36px, 4.4vw, 56px);
     text-align: center;
-    margin: 0 0 1rem;
+    margin: 0 0 var(--space-m);
 
     &--italic {
       font-family: 'Playfair Display', serif;
@@ -25,7 +25,7 @@
     font-size: clamp(16px, 1.6vw, 22px);
     text-align: center;
     color: rgba(255, 255, 255, 0.8);
-    margin: 0 0 2rem;
+    margin: 0 0 var(--space-xl);
     max-width: 600px;
   }
 
@@ -35,7 +35,7 @@
     font-size: 18px;
     color: #eee7bb;
     text-align: center;
-    margin: 0.5rem 0 0;
+    margin: var(--space-xs) 0 0;
   }
 
   &__form {
@@ -52,7 +52,7 @@
       display: flex;
       flex-direction: row;
       align-items: stretch;
-      gap: 6px;
+      gap: var(--space-xxs);
       flex-wrap: nowrap;
       position: relative;
     }

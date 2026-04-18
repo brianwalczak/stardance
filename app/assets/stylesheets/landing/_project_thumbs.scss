@@ -8,7 +8,7 @@
   min-height: 36rem;
   margin-top: -80px;
   z-index: 5;
-  padding: 0 2rem;
+  padding: 0 var(--space-xl);
 
   &__item {
     display: flex;

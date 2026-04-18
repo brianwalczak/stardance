@@ -3,7 +3,7 @@
   position: relative;
   display: flex;
   justify-content: center;
-  padding: 2rem;
+  padding: var(--space-xl);
   overflow-x: clip;
   color: white;
   margin: 15rem 0;
@@ -76,7 +76,7 @@
     max-width: 656px;
 
     p {
-      margin: 1rem 0;
+      margin: var(--space-m) 0;
       &:last-child { margin-bottom: 0; }
     }
   }

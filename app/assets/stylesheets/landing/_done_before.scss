@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem 0 1.5rem;
+  padding: var(--space-xl) 0 var(--space-l);
   color: white;
   font-family: 'Exo 2', sans-serif;
 
@@ -13,8 +13,8 @@
     height: auto;
     display: block;
 
-    &--top { margin-bottom: 4rem; }
-    &--bottom { margin-top: 4rem; }
+    &--top { margin-bottom: var(--space-xxxxl); }
+    &--bottom { margin-top: var(--space-xxxxl); }
   }
 
   &__star-artwork {
@@ -41,8 +41,8 @@
     font-size: clamp(16px, 1.7vw, 22px);
     text-align: center;
     max-width: 593px;
-    margin: 0 0 2rem;
-    line-height: 1.5;
+    margin: 0 0 var(--space-xl);
+    line-height: var(--line-height-body);
   }
 
   &__link {
@@ -86,13 +86,13 @@
     border: 4px solid #7886ae;
     width: 100%;
     min-height: 206px;
-    padding: 2rem 0 1.5rem;
+    padding: var(--space-xl) 0 var(--space-l);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    gap: 0.5rem;
+    gap: var(--space-xs);
   }
 
   &__card-number {

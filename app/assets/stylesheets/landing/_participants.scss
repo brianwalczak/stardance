@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
+  padding: var(--space-xl);
   overflow: visible;
   color: white;
 
@@ -29,7 +29,7 @@
     font-weight: 700;
     font-size: clamp(36px, 4.4vw, 56px);
     text-align: center;
-    margin: 0 0 2rem;
+    margin: 0 0 var(--space-xl);
   }
 
   &__cards {
@@ -107,7 +107,7 @@
     backdrop-filter: blur(12px);
     background: rgba(0, 0, 0, 0.25);
     border: 2px solid #7886ae;
-    padding: 1rem;
+    padding: var(--space-m);
     width: 248px;
   }
 

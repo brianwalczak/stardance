@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 clamp(55px, 4vw, 96px) 0 2.5rem;
+  padding: 0 clamp(55px, 4vw, 96px) 0 var(--space-xxl);
   height: clamp(100px, 7vw, 150px);
 
   &__logo {
@@ -60,7 +60,7 @@
   }
 
   @media (max-width: 700px) {
-    padding: 0 1rem;
+    padding: 0 var(--space-m);
 
     &__logo {
       width: 180px;

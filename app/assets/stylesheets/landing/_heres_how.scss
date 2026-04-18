@@ -1,11 +1,11 @@
 .heres-how {
   background: transparent;
   margin-top: 0;
-  padding: 1rem 2rem 4rem;
+  padding: var(--space-m) var(--space-xl) var(--space-xxxxl);
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 2rem;
+  gap: var(--space-xl);
   overflow-x: clip;
   overflow-y: visible;
   margin-bottom: 10rem;
@@ -39,7 +39,7 @@
     font-size: clamp(36px, 4.5vw, 58px);
     font-weight: 700;
     color: white;
-    margin: 0 0 0 max(2rem, calc(50% - 412px));
+    margin: 0 0 0 max(var(--space-xl), calc(50% - 412px));
     text-align: left;
   }
 
@@ -66,7 +66,7 @@
     -webkit-backdrop-filter: blur(12px);
     border: 2px solid #ffffff;
     border-radius: 8px;
-    padding: 2rem 2.5rem;
+    padding: var(--space-xl) var(--space-xxl);
     width: 386px;
     min-height: 214px;
     height: 214px;
@@ -74,7 +74,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.75rem;
+    gap: var(--space-s);
     text-align: center;
     flex-shrink: 0;
 
@@ -166,7 +166,7 @@
     font-size: clamp(16px, 1.5vw, 20px);
     color: rgba(255, 255, 255, 0.9);
     margin: 0;
-    line-height: 1.5;
+    line-height: var(--line-height-body);
     position: relative;
     z-index: 1;
   }
@@ -198,7 +198,7 @@
     font-size: clamp(16px, 1.4vw, 22px);
     color: rgba(255, 255, 255, 0.7);
     text-align: right;
-    margin: -1rem max(2rem, calc(50% - 412px)) 0 auto;
+    margin: calc(-1 * var(--space-m)) max(var(--space-xl), calc(50% - 412px)) 0 auto;
     position: absolute;
     right: 0;
     bottom: 20%;
@@ -208,7 +208,7 @@
     &__cards {
       flex-direction: column;
       align-items: center;
-      gap: 1.5rem;
+      gap: var(--space-l);
     }
 
     &__card { width: min(386px, 100%); }
