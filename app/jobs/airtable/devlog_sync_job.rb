@@ -15,7 +15,7 @@ class Airtable::DevlogSyncJob < Airtable::BaseSyncJob
       "user_id" => post&.user_id&.to_s,
       "created_at" => devlog.created_at,
       "synced_at" => Time.now,
-      "flavor_id" => devlog.id.to_s
+      "star_id" => devlog.id.to_s
     }
   end
 end

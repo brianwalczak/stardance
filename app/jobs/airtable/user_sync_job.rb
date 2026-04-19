@@ -26,7 +26,7 @@ class Airtable::UserSyncJob < Airtable::BaseSyncJob
       "created_at" => user.created_at,
       "synced_at" => Time.now,
       "is_banned" => user.banned,
-      "flavor_id" => user.id.to_s,
+      "star_id" => user.id.to_s,
       "ref" => user.ref,
       "last_funnel_event" => last_event&.event_name,
       "last_funnel_event_at" => last_event&.created_at,

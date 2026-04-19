@@ -61,7 +61,7 @@ class Airtable::BaseSyncJob < ApplicationJob
   end
 
   def primary_key_field
-    "flavor_id"
+    "star_id"
   end
 
   def sync_limit

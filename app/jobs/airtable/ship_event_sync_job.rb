@@ -16,7 +16,7 @@ class Airtable::ShipEventSyncJob < Airtable::BaseSyncJob
       "user_id" => post&.user_id&.to_s,
       "created_at" => ship_event.created_at,
       "synced_at" => Time.now,
-      "flavor_id" => ship_event.id.to_s
+      "star_id" => ship_event.id.to_s
     }
   end
 end

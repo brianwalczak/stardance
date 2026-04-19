@@ -20,7 +20,7 @@ class Airtable::ProjectSyncJob < Airtable::BaseSyncJob
       "created_at" => project.created_at,
       "deleted_at" => project.deleted_at,
       "synced_at" => Time.now,
-      "flavor_id" => project.id.to_s,
+      "star_id" => project.id.to_s,
       "creator_id" => creator&.id.to_s,
       "email" => creator&.email,
       "hackatime_id" => hackatime_identity&.uid,
