@@ -48,18 +48,18 @@ class Rsvp::ReplyMailbox < ApplicationMailbox
     unquoted_body.match?(STOP_REGEX)
   end
 
-  def parse_cell(body)
-    first_line = (body || "").lines.find { |l| !quoted?(l) && l.strip.match?(/\d/) }
-    digit = first_line&.scan(/[1-9]/)&.first
+  def parse_cell(_body)
+    digit = unquoted_body.scan(/[1-9]/).first
     digit && (digit.to_i - 1)
   end
 
+  # The user's own reply, stripped of the Gmail-style "On ... wrote:"
+  # attribution header (which may wrap across lines when the sender is long)
+  # and any `>`-prefixed quoted lines that follow.
   def unquoted_body
-    (extract_text_body || "").lines.reject { |l| quoted?(l) }.join
-  end
-
-  def quoted?(line)
-    line.start_with?(">") || line.match?(/^On .+ wrote:/)
+    body = (extract_text_body || "").dup
+    body = body.split(/^On .+? wrote:/m, 2).first || body
+    body.lines.reject { |l| l.start_with?(">") }.join
   end
 
   def extract_text_body

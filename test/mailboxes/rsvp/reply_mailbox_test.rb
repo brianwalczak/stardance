@@ -109,6 +109,28 @@ class Rsvp::ReplyMailboxTest < ActionMailbox::TestCase
     assert game.move_count >= 2
   end
 
+  test "wrapped 'On ... wrote:' header digits do not leak into the move parser" do
+    rsvp = Rsvp.create!(email: "chauhan.singh.kartikey.0.9@gmail.com")
+
+    receive_inbound_email_from_mail \
+      to: "rsvp@stardance.hackclub.com",
+      from: "chauhan.singh.kartikey.0.9@gmail.com",
+      subject: "Re: welcome",
+      body: <<~BODY
+        Hey Stardance
+
+        On Mon, Apr 20, 2026 at 4:45 PM Stardance (Hack Club) <
+        stardance@hackclub.com> wrote:
+        > Confirmed.
+        > Wanna play tic tac toe?
+      BODY
+
+    game = Rsvp::Game.current_for(rsvp)
+    assert_not_nil game
+    assert_equal 0, game.move_count, "no move should be played from the attribution header"
+    assert_enqueued_email_with Rsvp::Mailer, :tic_tac_toe_start, args: [ game ]
+  end
+
   test "quoted STOP in the previous email body does not end the game" do
     rsvp = Rsvp.create!(email: "quoter@example.com")
     Rsvp::Game.start_for(rsvp).update!(move_count: 4, board: "-OXX--O--")
