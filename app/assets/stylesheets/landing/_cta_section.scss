@@ -65,6 +65,10 @@
       height: auto;
       transform: rotate(1.48deg);
       pointer-events: none;
+
+      @media (max-width: 600px) {
+  right: 34.6px;
+      }
     }
   }
   margin-bottom: 4rem;

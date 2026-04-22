@@ -1,12 +1,21 @@
-// "What is this?" section — single bordered card with an offset shadow.
+// "What is this?" section — nested layered borders.
 .what-is-this {
   position: relative;
   display: flex;
-  justify-content: center;
-  padding: min(var(--space-xl), 3vw);
+  flex-direction: column;
+  align-items: center;
   overflow-x: clip;
   color: white;
-  margin: 15rem 0;
+  margin: 3rem 0 15rem 0px;
+
+  // Full-bleed horizontal line with two decorative stars.
+  &__divider {
+    display: block;
+    width: 100vw;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 8rem;
+  }
 
   &__moon {
     position: absolute;
@@ -26,25 +35,52 @@
     }
 
     @media (max-width: 600px) {
-  top: 92.8%;
-  left: 92.6%;
-  width: 100%;
+      top: 92.8%;
+      left: 92.6%;
+      width: 100%;
     }
   }
 
   &__card-stack {
     position: relative;
-    max-width: 824px;
+    z-index: 1;
+    max-width: 862px;
     width: 100%;
   }
 
+  // Nested borders, outermost to innermost. Each wraps the next with 10px of
+  // padding so the borders read as concentric frames.
+  &__border {
+    border: 2px solid #eee7bb;
+    padding: 10px;
+    backdrop-filter: blur(12px);
+
+    &--1 {
+      border-color: rgba(238, 231, 187, 0.1);
+      background: rgba(8, 6, 30, 0.1);
+      border-radius: 28px;
+    }
+    &--2 {
+      border-color: rgba(238, 231, 187, 0.25);
+      background: rgba(8, 6, 30, 0.25);
+      border-radius: 22px;
+    }
+    &--3 {
+      border-color: rgba(238, 231, 187, 0.6);
+      background: rgba(8, 6, 30, 0.6);
+      border-radius: 16px;
+    }
+    &--4 {
+      border-color: rgba(238, 231, 187, 0.8);
+      background: rgba(8, 6, 30, 0.8);
+      border-radius: 12px;
+    }
+  }
+
   &__inner {
-    position: relative;
-    z-index: 1;
-    border: 3px solid #eee7bb;
+    border: 2px solid #eee7bb;
     border-radius: 8px;
     background: #08061e;
-    box-shadow: 8px 10px 0 rgba(238, 231, 187, 0.12);
     padding: clamp(2rem, 4vw, 3.5rem) clamp(2rem, 5vw, 4rem);
     text-align: center;
   }
@@ -75,11 +111,15 @@
     }
   }
 
-  @media (max-width: 600px) {
-    // Tighten the offset shadow on small screens so it doesn't push the
-    // card off the right edge.
-    &__inner {
-      box-shadow: 5px 6px 0 rgba(238, 231, 187, 0.12);
+  &__footnote {
+    margin: var(--space-m) auto 0;
+    text-align: center;
+    font-size: clamp(14px, 1.2vw, 16px);
+    color: #fffbe4;
+
+    a {
+      color: inherit;
+      text-decoration: underline;
     }
   }
 }

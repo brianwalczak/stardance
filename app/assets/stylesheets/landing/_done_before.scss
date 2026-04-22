@@ -22,13 +22,12 @@
   }
 
   &__star-artwork {
-    width: clamp(200px, 18vw, 300px);
+    width: clamp(200px, 20vw, 350px);
     height: auto;
     margin-bottom: -0.25rem;
     position: absolute;
     z-index: 1;
     top: 0;
-    transform: translateY(-10%);
   }
 
   &__title {
