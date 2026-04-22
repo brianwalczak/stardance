@@ -46,41 +46,62 @@ COPY
 
   <section class="educator-toolkit__resources">
     <h2 class="educator-toolkit__section-title educator-toolkit__section-title--center">Resources</h2>
-    <div class="educator-toolkit__grid">
-      <a class="educator-toolkit__resource"
-         href="<%= image_path("landing/header/stardance-logo.png") %>"
-         download="stardance-logo.png">
-        <%= image_tag image_url("landing/header/stardance-logo.png"), alt: "Stardance logo", class: "educator-toolkit__resource-thumb", loading: "lazy" %>
-        <span class="educator-toolkit__resource-title">Download the logo</span>
-        <span class="educator-toolkit__resource-meta">PNG · Use in newsletters &amp; slides</span>
-      </a>
 
-      <a class="educator-toolkit__resource"
-         href="<%= poster_request_url %>"
-         target="_blank"
-         rel="noopener">
-        <span class="educator-toolkit__resource-emoji" aria-hidden="true">📬</span>
-        <span class="educator-toolkit__resource-title">Request free posters</span>
-        <span class="educator-toolkit__resource-meta">We'll mail them to your classroom</span>
-      </a>
-
-      <a class="educator-toolkit__resource"
+    <div class="educator-toolkit__resource-layout">
+      <a class="educator-toolkit__resource educator-toolkit__resource--featured"
          href="<%= video_watch_url %>"
          target="_blank"
          rel="noopener">
-        <span class="educator-toolkit__resource-emoji" aria-hidden="true">🎬</span>
-        <span class="educator-toolkit__resource-title">Watch the 2-minute video</span>
-        <span class="educator-toolkit__resource-meta">Perfect for a classroom intro</span>
+        <div class="educator-toolkit__resource-body">
+          <h3 class="educator-toolkit__resource-title">Watch the 2&#8209;minute video</h3>
+          <p class="educator-toolkit__resource-meta">
+            Two minutes, classroom-ready. Show it before students sign up.
+          </p>
+        </div>
+        <span class="educator-toolkit__resource-action">
+          Watch video <span aria-hidden="true">&rarr;</span>
+        </span>
       </a>
 
-      <a class="educator-toolkit__resource"
-         href="<%= patch_request_url %>"
-         target="_blank"
-         rel="noopener">
-        <span class="educator-toolkit__resource-emoji" aria-hidden="true">🧵</span>
-        <span class="educator-toolkit__resource-title">Get an Artemis II mission patch</span>
-        <span class="educator-toolkit__resource-meta">Show the video to your class and we'll mail one</span>
-      </a>
+      <div class="educator-toolkit__resource-stack">
+        <a class="educator-toolkit__resource educator-toolkit__resource--compact"
+           href="<%= poster_request_url %>"
+           target="_blank"
+           rel="noopener">
+          <span class="educator-toolkit__resource-body">
+            <span class="educator-toolkit__resource-title">Request free posters</span>
+            <span class="educator-toolkit__resource-meta">Free classroom posters, mailed to your door.</span>
+          </span>
+          <span class="educator-toolkit__resource-action">
+            Request posters <span aria-hidden="true">&rarr;</span>
+          </span>
+        </a>
+
+        <a class="educator-toolkit__resource educator-toolkit__resource--compact"
+           href="<%= patch_request_url %>"
+           target="_blank"
+           rel="noopener">
+          <span class="educator-toolkit__resource-body">
+            <span class="educator-toolkit__resource-title">Get an Artemis II mission patch</span>
+            <span class="educator-toolkit__resource-meta">Sewn Artemis II mission patch, mailed after you show the video.</span>
+          </span>
+          <span class="educator-toolkit__resource-action">
+            Request patch <span aria-hidden="true">&rarr;</span>
+          </span>
+        </a>
+
+        <a class="educator-toolkit__resource educator-toolkit__resource--compact"
+           href="<%= image_path("landing/header/stardance-logo.png") %>"
+           download="stardance-logo.png">
+          <span class="educator-toolkit__resource-body">
+            <span class="educator-toolkit__resource-title">Download the printable branding kit</span>
+            <span class="educator-toolkit__resource-meta">Lorem Ipsum.</span>
+          </span>
+          <span class="educator-toolkit__resource-action">
+            Download Assets <span aria-hidden="true">&rarr;</span>
+          </span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -93,9 +114,6 @@ COPY
         Copy to clipboard
       </button>
     </div>
-    <p class="educator-toolkit__copy-hint">
-      Drop this straight into your newsletter, LMS, or classroom announcement.
-    </p>
     <pre class="educator-toolkit__copy-block" data-educator-copy-source><%= sample_copy %></pre>
   </section>
 
