@@ -1,5 +1,7 @@
 <header class="landing-header">
-  <%= image_tag image_url("landing/header/stardance-logo.png"), loading: "eager", fetchpriority: "high", alt: "Stardance Challenge by Hack Club", class: "landing-header__logo" %>
+  <%= link_to root_path do %>
+    <%= image_tag image_url("landing/header/stardance-logo.png"), loading: "eager", fetchpriority: "high", alt: "Stardance Challenge by Hack Club", class: "landing-header__logo" %>
+  <% end %>
 
   <div class="landing-header__partners">
     <span class="landing-header__partnership-text">in partnership with</span>
