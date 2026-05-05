@@ -16,7 +16,7 @@ You'll need Docker Compose, Ruby, and Rails to run Stardance. We strongly encour
     ```
     (this will already be done for you if you use *GitHub Codespaces!*)
 
-2. Set up a PostgreSQL database.
+2. Set up a new PostgreSQL database.
     ```sh
     docker compose up -d db
     ```
@@ -26,9 +26,10 @@ You'll need Docker Compose, Ruby, and Rails to run Stardance. We strongly encour
     docker compose run --service-ports web /bin/bash
     ```
 
-4. Install all dependencies.
+4. Install all dependencies, and prepare your new database.
     ```sh
     bundle install
+    bin/rails db:prepare
     ```
 
 5. Set up your `.env` file by copying over `example.env`. You'll need to follow the instructions in said `.env` file!
@@ -37,18 +38,18 @@ You'll need Docker Compose, Ruby, and Rails to run Stardance. We strongly encour
     ```
 
 6. Create an app on Hack Club Auth (HCA) Staging. Go to https://hca.dinosaurbbq.org/developer/apps, and click the `app me up!` button.
-    - redirect URI: `http://localhost:3000/oauth/callback`
-    - select *ALL THE SCOPES!!!!*
+    - Redirect URI: `http://localhost:3000/oauth/callback`
+    - Select *ALL THE SCOPES!!!!*
 
     **You may get an error like `The requested scope is invalid, unknown, or malformed` when authenticating.** If this is the case:
-    - copy the `&state=<...>` parameter of the failing URL.
-    - go to your app on HCA, and `Right click > Copy Link` on `Test Auth` to the right of the redirect URI.
-    - you should get a URL like this:
+    - Copy the `&state=<...>` parameter of the failing URL.
+    - Go back to your app on HCA, and `Right click > Copy Link` on `Test Auth` (to the right of the redirect URI).
+    - You should have copied a URL like this:
         ```
         https://hca.dinosaurbbq.org/oauth/authorize?client_id=c1b86a9f2073eec8e457ce3eb169afb9&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Foauth%2Fcallback&response_type=code&scope=openid+profile+email+name+slack_id+verification_status
         ```
-    - append the `&state=<...>` parameter you copied in the first step to the URL
-    - navigate to that URL, and go through the normal auth flow
+    - Append the `&state=<...>` parameter you copied in the first step to this URL
+    - Navigate to that URL, and go through the normal auth flow!
 
     This is only an issue in development environments.
 
@@ -92,7 +93,7 @@ You'll need Docker Compose, Ruby, and Rails to run Stardance. We strongly encour
 
 ### Starting the development environment back up again
 
-1. Set up your PostgreSQL database.
+1. Start up your PostgreSQL database.
     ```sh
     docker compose up -d db
     ```
@@ -107,7 +108,12 @@ You'll need Docker Compose, Ruby, and Rails to run Stardance. We strongly encour
     bundle install
     ```
 
-4. Run `bin/dev` to start the development server on port 3000, then visit `http://localhost:3000` in your browser!
+4. Apply any new database migrations that may have been pushed.
+    ```sh
+    bin/rails db:migrate
+    ```
+
+6. Run `bin/dev` to start the development server on port 3000, then visit `http://localhost:3000` in your browser!
 
 ## No Docker?
 
